@@ -20,7 +20,7 @@ export default function Nav() {
           VibeLog
         </Link>
 
-        <div className="flex items-center gap-3 font-semibold">
+        <div className="flex items-center gap-2 font-semibold">
           {pathname === '/' ? (
             <Link className="flex items-center gap-1" href="/profile">
               <RiUser2Line /> Profile
@@ -30,7 +30,7 @@ export default function Nav() {
               <RiTimeLine /> Feed
             </Link>
           )}
-
+          <span className="opacity-40">|</span>
           <button className="flex items-center gap-1">
             <RiLoginBoxLine /> Login
           </button>
