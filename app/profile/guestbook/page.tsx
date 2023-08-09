@@ -1,26 +1,26 @@
 export default function Guestbook() {
   return (
-    <div className="bg-white mt-1 rounded-md shadow-sm p-2 items-baseline profileHeight">
+    <div className="bg-teal-700 mt-1 rounded-md shadow-sm p-2 items-baseline profileHeight">
       <form>
-        <label className="text-sm text-slate-500" htmlFor="comment">
+        <label className="text-sm opacity-85" htmlFor="comment">
           Sign to Golam Rabbani's guestbook
         </label>
         <textarea
-          className="bg-slate-100 w-full mt-1 mb-1 p-2 rounded-md border  border-slate-300 focus:border-slate-500 focus:outline-0"
+          className="bg-teal-800 w-full mt-1 mb-1 p-2 rounded-md border  border-teal-800 placeholder:opacity-60 focus:border-black focus:outline-0"
           id="comment"
           rows={2}
           placeholder="Type something about...."
         />
-        <button className="bg-slate-700 text-slate-50 w-32 rounded-md p-2 active:bg-slate-800 hover:bg-slate-800">
+        <button className="bg-teal-100 text-teal-900 w-32 rounded-md p-2 active:bg-slate-800 hover:bg-slate-800">
           Add
         </button>
       </form>
 
-      <h3 className="mt-4 text-lg border-b border-slate-300 text-slate-500">
+      <h3 className="mt-4 text-lg border-b border-slate-300 opacity-85">
         Recents
       </h3>
       <div>
-        <p className="text-slate-400 text-center my-[10vh] ">
+        <p className="opacity-50 text-center my-[10vh] ">
           No one signed it yet
         </p>
       </div>

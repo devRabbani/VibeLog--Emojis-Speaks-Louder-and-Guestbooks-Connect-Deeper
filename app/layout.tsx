@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <main className="max-w-2xl px-3 mx-auto">
+        <main className="max-w-2xl px-3 mx-auto sm:px-0">
           <Nav />
           <section className="mt-5">{children}</section>
         </main>

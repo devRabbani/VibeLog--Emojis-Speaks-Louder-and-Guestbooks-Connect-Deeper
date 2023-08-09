@@ -12,7 +12,7 @@
 
 @layer base {
   body {
-    @apply bg-slate-200 text-slate-900;
+    @apply bg-teal-900 text-teal-50;
   }
 }
 
