@@ -14,7 +14,7 @@ export default function Nav() {
   const pathname = usePathname()
 
   return (
-    <nav className="p-3 bg-teal-700 sticky top-3 rounded-md shadow-md">
+    <nav className="p-3 bg-teal-700 sticky top-3 rounded-md shadow-lg">
       <div className="flex justify-between items-center w-full">
         <Link className="text-2xl font-bold" href="/">
           VibeLog

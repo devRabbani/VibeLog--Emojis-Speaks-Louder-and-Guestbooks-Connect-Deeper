@@ -20,6 +20,9 @@ dependencies:
   emoji-picker-react:
     specifier: ^4.4.10
     version: 4.4.10(react@18.2.0)
+  moment:
+    specifier: ^2.29.4
+    version: 2.29.4
   next:
     specifier: 13.4.13
     version: 13.4.13(react-dom@18.2.0)(react@18.2.0)
@@ -536,6 +539,10 @@ packages:
     resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}
     dependencies:
       brace-expansion: 1.1.11
+    dev: false
+
+  /moment@2.29.4:
+    resolution: {integrity: sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==}
     dev: false
 
   /mz@2.7.0:
