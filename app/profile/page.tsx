@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { RiShareLine } from 'react-icons/ri'
 
 export default function Profile() {
+  console.count('Profile')
   return (
     <div className="bg-teal-700 mt-1 rounded-md shadow-sm p-2 items-baseline pt-3 profileHeight">
       <div className="flex justify-between gap-1 mb-2 border-b border-teal-800 pb-2">

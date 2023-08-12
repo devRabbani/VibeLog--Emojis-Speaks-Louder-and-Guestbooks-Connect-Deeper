@@ -1,19 +1,28 @@
-import NextAuth, { NextAuthOptions } from 'next-auth'
+import NextAuth from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
+import { KyselyAdapter } from '@auth/kysely-adapter'
+import db from '@/lib/db'
+import type { NextAuthOptions } from 'next-auth'
 
 export const authOptions: NextAuthOptions = {
-  session: {
-    strategy: 'jwt',
-  },
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     }),
   ],
+  callbacks: {
+    async signIn({ user, account, profile, email, credentials }) {
+      return true
+    },
+    async session({ session, token, user }) {
+      return session
+    },
+    async jwt({ token, user, account, profile, isNewUser }) {
+      return token
+    },
+  },
 }
-
-console.log(process.env.GOOGLE_CLIENT_ID, process.env.GOOGLE_CLIENT_SECRET)
 
 const handler = NextAuth(authOptions)
 
