@@ -6,6 +6,7 @@ export default function ProfileLayout({
 }: {
   children: React.ReactNode
 }) {
+  console.count('Laout profile')
   return (
     <>
       <Subnav />
