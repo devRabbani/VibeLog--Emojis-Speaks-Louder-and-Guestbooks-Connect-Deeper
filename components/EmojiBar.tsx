@@ -1,6 +1,8 @@
 'use client'
 
+import { EmojiClickData } from 'emoji-picker-react'
 import dynamic from 'next/dynamic'
+import { useState } from 'react'
 import { RiAddFill, RiCloseLine } from 'react-icons/ri'
 
 const EmojiPicker = dynamic(() => import('emoji-picker-react'), {
@@ -17,6 +19,8 @@ export default function EmojiBar({
 }: {
   hideEmojiBar: () => void
 }) {
+  const [emoji, setEmoji] = useState<EmojiClickData>()
+
   return (
     <div className="fixed bottom-0 left-1 right-1 max-w-xl mx-auto bg-teal-50 shadow-xl rounded-t-md px-1 ">
       <div className="flex">
@@ -27,7 +31,6 @@ export default function EmojiBar({
           Close
         </button>
       </div>
-
       <EmojiPicker
         lazyLoadEmojis={true}
         width="100%"
@@ -37,6 +40,7 @@ export default function EmojiBar({
         previewConfig={{
           showPreview: false,
         }}
+        onEmojiClick={(data) => setEmoji(data)}
       />
     </div>
   )

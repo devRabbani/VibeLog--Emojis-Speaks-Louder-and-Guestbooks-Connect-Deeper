@@ -3,7 +3,8 @@ export default function Guestbook() {
     <div className="bg-teal-700 mt-1 rounded-md shadow-sm p-2 items-baseline profileHeight">
       <form>
         <label className="text-sm opacity-85" htmlFor="comment">
-          Sign to Golam Rabbani's guestbook
+          Sign to <span className="font-semibold">Golam Rabbani</span>'s
+          guestbook
         </label>
         <textarea
           className="bg-teal-800 w-full mt-1 mb-1 p-2 rounded-md border  border-teal-800 placeholder:opacity-60 focus:border-black focus:outline-0"
@@ -16,7 +17,7 @@ export default function Guestbook() {
         </button>
       </form>
 
-      <h3 className="mt-4 text-lg border-b border-slate-300 opacity-85">
+      <h3 className="text-lg mt-4 border-b border-teal-800 opacity-80 pb-1">
         Recents
       </h3>
       <div>

@@ -2,6 +2,7 @@ import Nav from '@/components/Nav'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import AuthProvider from '@/components/AuthProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,8 +20,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <main className="max-w-2xl px-3 mx-auto sm:px-0">
-          <Nav />
-          <section className="mt-5">{children}</section>
+          <AuthProvider>
+            <Nav />
+            <section className="mt-5">{children}</section>
+          </AuthProvider>
         </main>
       </body>
     </html>
