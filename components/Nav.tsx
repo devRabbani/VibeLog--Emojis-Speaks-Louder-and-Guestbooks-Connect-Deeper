@@ -57,7 +57,7 @@ export default function Nav() {
             session ? (
               <Link
                 className="flex items-center gap-1 justify-center w-20"
-                href="/profile"
+                href={`/profile/${session?.user?.user_id}`}
               >
                 <RiUser2Line /> Profile
               </Link>

@@ -6,7 +6,7 @@ export default function Home() {
       <h3 className="text-lg border-b border-teal-800 opacity-80 pb-1">
         Recents Vibes
       </h3>
-      <VibesList vibes={emojis} isFeed={true} />
+      <VibesList vibes={[]} isFeed={true} />
     </div>
   )
 }

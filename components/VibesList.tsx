@@ -1,13 +1,10 @@
+import { Timestamp } from '@/types/db'
 import moment from 'moment'
 import Link from 'next/link'
 
 interface VibesTypes {
-  desc: string
-  tags: string[]
-  code: string
-  urls: {
-    svg: string
-  }
+  emoji: string
+  created_at: Timestamp
 }
 interface Props {
   vibes: VibesTypes[]
@@ -27,15 +24,15 @@ export default function VibesList({ vibes, isFeed }: Props) {
 const VibeItem = ({ data, isFeed }: { data: VibesTypes; isFeed: boolean }) => {
   return (
     <div className="text-7xl flex flex-col justify-center w-full text-center bg-teal-800">
-      <span className="mb-2">
-        {String.fromCodePoint(parseInt(data.code, 16))}
-      </span>
+      <span className="mb-2">{data.emoji}</span>
       {isFeed ? (
         <Link href="/profile" className="text-xs font-medium">
           Golam Rabbani
         </Link>
       ) : null}
-      <p className="text-[10px] opacity-80 mt-[1px]">{moment().fromNow()}</p>
+      <p className="text-[10px] opacity-80 mt-[1px]">
+        {moment.utc(data.created_at).fromNow()}
+      </p>
     </div>
   )
 }

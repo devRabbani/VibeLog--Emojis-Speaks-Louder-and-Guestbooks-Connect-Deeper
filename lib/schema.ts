@@ -1,13 +1,24 @@
 import { Kysely, sql } from 'kysely'
 
 export async function up(db: Kysely<any>): Promise<void> {
-  await db.schema
-    .createTable('User')
-    .addColumn('id', 'serial', (col) => col.notNull().primaryKey())
-    .addColumn('name', 'text', (col) => col.notNull())
-    .addColumn('uuid', 'varchar(50)', (col) => col.notNull())
-    .execute()
+  // await db.schema
+  //   .createTable('User')
+  //   .addColumn('id', 'serial', (col) => col.notNull().primaryKey())
+  //   .addColumn('name', 'text', (col) => col.notNull())
+  //   .addColumn('uuid', 'varchar(50)', (col) => col.notNull())
+  //   .execute()
 
+  await db.schema
+    .createTable('Vibe')
+    .addColumn('id', 'serial', (col) => col.notNull().primaryKey())
+    .addColumn('emoji', 'varchar(50)', (col) => col.notNull())
+    .addColumn('created_at', 'timestamptz', (col) =>
+      col.defaultTo(sql`CURRENT_TIMESTAMP`)
+    )
+    .addColumn('user_id', 'serial', (col) =>
+      col.references('User.id').onDelete('cascade').notNull()
+    )
+    .execute()
   // await db.schema
   //   .createTable('Account')
   //   .addColumn('id', 'serial', (col) => col.notNull().primaryKey())

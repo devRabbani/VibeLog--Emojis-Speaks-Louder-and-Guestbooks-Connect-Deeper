@@ -1,8 +1,5 @@
-import NextAuth from 'next-auth'
+import NextAuth, { type NextAuthOptions } from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
-import { KyselyAdapter } from '@auth/kysely-adapter'
-import db from '@/lib/db'
-import type { NextAuthOptions } from 'next-auth'
 import { createUser } from '@/actions/users.actions'
 
 export const authOptions: NextAuthOptions = {
@@ -16,10 +13,11 @@ export const authOptions: NextAuthOptions = {
     async signIn({ user }) {
       if (user) {
         try {
-          await createUser({ name: user.name!, uuid: user.id })
+          const id = await createUser({ name: user.name!, uuid: user.id! })
+          user.user_id = id
           return true
         } catch (error) {
-          console.log('Create user Error', error)
+          console.log('Create user :', error)
           return false
         }
       } else {
@@ -29,12 +27,12 @@ export const authOptions: NextAuthOptions = {
     async session({ session, token }) {
       console.count('Session')
 
-      session.user.id = token?.id
+      session.user.user_id = token?.user_id
       return session
     },
-    async jwt({ token, user, account, profile }) {
+    async jwt({ token, user }) {
       if (user) {
-        token.id = user.id
+        token.user_id = user.user_id
       }
       return token
     },

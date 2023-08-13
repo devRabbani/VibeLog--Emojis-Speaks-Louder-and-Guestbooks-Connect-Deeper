@@ -7,8 +7,14 @@ declare module 'next-auth' {
   interface Session {
     user: {
       /** The user's postal address. */
-      id?: string
+      user_id?: number
+      uuid?: string
     } & DefaultSession['user']
+  }
+
+  interface User {
+    user_id?: number
+    name?: string
   }
 }
 
@@ -16,6 +22,6 @@ declare module 'next-auth/jwt' {
   /** Returned by the `jwt` callback and `getToken`, when using JWT sessions */
   interface JWT {
     /** ID Token */
-    id?: string
+    user_id?: number
   }
 }

@@ -1,21 +1,37 @@
+import { getUserData } from '@/actions/users.actions'
+import { getUserVibes } from '@/actions/vibe.actions'
 import AddMood from '@/components/AddMood'
 import VibesList from '@/components/VibesList'
 import Link from 'next/link'
 import { RiShareLine } from 'react-icons/ri'
 
-export default function Profile() {
+interface Props {
+  params: {
+    userId: string
+  }
+}
+
+export default async function Profile({ params: { userId } }: Props) {
+  const userNamePromise = getUserData(userId)
+  const vibesListPromise = getUserVibes(userId)
+
+  const [userName, vibesList] = await Promise.all([
+    userNamePromise,
+    vibesListPromise,
+  ])
   console.count('Profile')
   return (
     <div className="bg-teal-700 mt-1 rounded-md shadow-sm p-2 items-baseline pt-3 profileHeight">
       <div className="flex justify-between gap-1 mb-2 border-b border-teal-800 pb-2">
         <p>
-          Vibes of <span className="font-semibold">Golam Rabbani</span>
+          Vibes of <span className="font-semibold capitalize">{userName}</span>
         </p>
         <button className="flex items-center gap-1 text-xl">
           <RiShareLine />
         </button>
       </div>
-      <VibesList vibes={emojis} isFeed={false} />
+
+      <VibesList vibes={vibesList} isFeed={false} />
       <AddMood />
     </div>
   )
@@ -25,7 +41,7 @@ const emojis = [
   {
     desc: 'grinning face',
     tags: ['face', 'grin'],
-    code: '1f600',
+    code: '1f9db-200d-2640-fe0f',
     urls: {
       svg: 'https://storage.googleapis.com/teamoji-app.appspot.com/emoji/svg/emoji_u1f600.svg',
     },
@@ -33,7 +49,7 @@ const emojis = [
   {
     desc: 'grinning face with smiling eyes',
     tags: ['eye', 'face', 'grin', 'smile'],
-    code: '1f601',
+    code: '1f468-200d-2764-fe0f-200d-1f468',
     urls: {
       svg: 'https://storage.googleapis.com/teamoji-app.appspot.com/emoji/svg/emoji_u1f601.svg',
     },
@@ -41,7 +57,7 @@ const emojis = [
   {
     desc: 'face with tears of joy',
     tags: ['face', 'joy', 'laugh', 'tear'],
-    code: '1f602',
+    code: '👩‍❤️‍💋‍👨',
     urls: {
       svg: 'https://storage.googleapis.com/teamoji-app.appspot.com/emoji/svg/emoji_u1f602.svg',
     },

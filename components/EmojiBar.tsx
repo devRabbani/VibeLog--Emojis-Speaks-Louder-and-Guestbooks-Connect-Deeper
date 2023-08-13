@@ -1,6 +1,8 @@
 'use client'
 
+import { createVibe } from '@/actions/vibe.actions'
 import { EmojiClickData } from 'emoji-picker-react'
+import { useSession } from 'next-auth/react'
 import dynamic from 'next/dynamic'
 import { useState } from 'react'
 import { RiAddFill, RiCloseLine } from 'react-icons/ri'
@@ -19,7 +21,17 @@ export default function EmojiBar({
 }: {
   hideEmojiBar: () => void
 }) {
-  const [emoji, setEmoji] = useState<EmojiClickData>()
+  const { data: session } = useSession()
+
+  const selectEmoji = async (emoji: string) => {
+    try {
+      if (!session?.user) throw Error('No auth user found')
+      await createVibe({ id: session.user.user_id!, emoji })
+    } catch (error) {
+      alert('Something went wrong')
+      console.log('Creating Vibe', error)
+    }
+  }
 
   return (
     <div className="fixed bottom-0 left-1 right-1 max-w-xl mx-auto bg-teal-50 shadow-xl rounded-t-md px-1 ">
@@ -40,7 +52,7 @@ export default function EmojiBar({
         previewConfig={{
           showPreview: false,
         }}
-        onEmojiClick={(data) => setEmoji(data)}
+        onEmojiClick={(data) => selectEmoji(data.emoji)}
       />
     </div>
   )
