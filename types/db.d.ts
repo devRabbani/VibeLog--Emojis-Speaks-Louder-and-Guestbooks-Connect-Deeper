@@ -10,9 +10,7 @@ export interface Database {
 interface User {
   id: GeneratedAlways<string>
   name: string | null
-  email: string
-  emailVerified: Date | null
-  image: string | null
+  uuid: string | null
 }
 
 interface Account {
