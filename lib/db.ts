@@ -1,5 +1,5 @@
 import { Kysely } from 'kysely'
-import { Database } from './db.d'
+import { Database } from '../types/db'
 import { NeonDialect } from 'kysely-neon'
 
 const db = new Kysely<Database>({

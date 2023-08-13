@@ -3,6 +3,7 @@ import GoogleProvider from 'next-auth/providers/google'
 import { KyselyAdapter } from '@auth/kysely-adapter'
 import db from '@/lib/db'
 import type { NextAuthOptions } from 'next-auth'
+import { createUser } from '@/actions/users.actions'
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -12,13 +13,29 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
-      return true
+    async signIn({ user }) {
+      if (user) {
+        try {
+          await createUser({ name: user.name!, uuid: user.id })
+          return true
+        } catch (error) {
+          console.log('Create user Error', error)
+          return false
+        }
+      } else {
+        return false
+      }
     },
-    async session({ session, token, user }) {
+    async session({ session, token }) {
+      console.count('Session')
+
+      session.user.id = token?.id
       return session
     },
-    async jwt({ token, user, account, profile, isNewUser }) {
+    async jwt({ token, user, account, profile }) {
+      if (user) {
+        token.id = user.id
+      }
       return token
     },
   },

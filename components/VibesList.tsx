@@ -26,7 +26,7 @@ export default function VibesList({ vibes, isFeed }: Props) {
 
 const VibeItem = ({ data, isFeed }: { data: VibesTypes; isFeed: boolean }) => {
   return (
-    <div className="text-7xl flex flex-col justify-center w-full text-center">
+    <div className="text-7xl flex flex-col justify-center w-full text-center bg-teal-800">
       <span className="mb-2">
         {String.fromCodePoint(parseInt(data.code, 16))}
       </span>

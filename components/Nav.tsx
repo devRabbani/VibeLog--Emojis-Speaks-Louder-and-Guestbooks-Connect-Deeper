@@ -12,6 +12,7 @@ import {
 import { usePathname } from 'next/navigation'
 import { signIn, signOut, useSession } from 'next-auth/react'
 import { ErrorInfo, useState } from 'react'
+import { migrateData, showData } from '@/lib/helper'
 
 export default function Nav() {
   // Local States
@@ -42,7 +43,7 @@ export default function Nav() {
     }
   }
 
-  console.log(session, status)
+  console.log(session?.user, status)
 
   return (
     <nav className="p-3 bg-teal-700 sticky top-3 rounded-md shadow-lg">
@@ -50,7 +51,7 @@ export default function Nav() {
         <Link className="text-2xl font-bold" href="/">
           VibeLog
         </Link>
-
+        <button onClick={() => showData()}>SHow Data</button>
         <div className="flex items-center gap-1 font-semibold">
           {pathname === '/' ? (
             session ? (
