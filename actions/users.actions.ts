@@ -2,6 +2,7 @@
 
 import db from '@/lib/db'
 import { User } from '@/types/db'
+import { notFound } from 'next/navigation'
 
 export const createUser = async ({
   name,
@@ -26,12 +27,15 @@ export const createUser = async ({
   return result?.id
 }
 
-export const getUserData = async (user_id: string) => {
+export const getUserData = async (user_id: number) => {
   const result = await db
     .selectFrom('User')
     .select('name')
-    .where('id', '=', Number(user_id))
-    .executeTakeFirstOrThrow()
+    .where('id', '=', user_id)
+    .executeTakeFirst()
 
+  if (!result?.name) {
+    return notFound()
+  }
   return result.name
 }

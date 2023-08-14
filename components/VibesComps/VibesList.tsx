@@ -1,10 +1,7 @@
-import { Timestamp } from '@/types/db'
 import moment from 'moment'
 import Link from 'next/link'
-import LoadMoreVibes from './loadMoreVibes'
-import { PAGE_LIMIT } from '@/lib/constant'
 import VibesBottomBar from './VibesBottomBar'
-import { VibesTypes } from '@/types/utility'
+import type { VibesTypes } from '@/types/utility'
 
 interface Props {
   vibes: VibesTypes[]
@@ -12,6 +9,10 @@ interface Props {
 }
 
 export default function VibesList({ vibes, isFeed }: Props) {
+  if (!vibes?.length) {
+    return <p className="text-center mt-[20vh] opacity-50">No data found</p>
+  }
+
   return (
     <div className="mt-6 grid grid-cols-3 gap-x-4 gap-y-8 sm:grid-cols-4">
       <VibesMap vibes={vibes} />

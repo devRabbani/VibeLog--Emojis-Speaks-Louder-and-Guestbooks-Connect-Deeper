@@ -8,8 +8,9 @@ import ToasterClient from '@/components/Layout/ToasterClient'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'VibeLog',
-  description: 'Your vibe check and guestbook app',
+  title: 'VibeLog | Emojis Speaks Louder and Guestbooks Connect Deeper',
+  description:
+    'Share moods using emojis, connect through guestbook messages. Your space for mood expression and guestbook interactions',
 }
 
 export default function RootLayout({

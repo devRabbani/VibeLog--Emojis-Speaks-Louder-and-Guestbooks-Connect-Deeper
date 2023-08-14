@@ -2,49 +2,39 @@
 
 import { useInView } from 'react-intersection-observer'
 import { useEffect, useState } from 'react'
-import { PAGE_LIMIT } from '@/lib/constant'
-import { VibesMap } from './VibesList'
-import { getMoreFeedVibes, getMoreVibes } from '@/actions/vibe.actions'
+import { PAGE_LIMIT_GUEST } from '@/lib/constant'
+import { useParams } from 'next/navigation'
 import { delay } from '@/lib/utils'
-import type { VibesTypes } from '@/types/utility'
+import type { GuestMessagesType } from '@/types/utility'
+import { MessagesMap } from './MessagesList'
+import { getMoreMessages } from '@/actions/guestbook.actions'
 import Spinner from '../spinner'
 
-export default function LoadMoreVibes({
-  isFeed,
-  user_id,
-}: {
-  isFeed: boolean
-  user_id: string
-}) {
+export default function LoadMoreMessages() {
   // Local States
   const [isLoading, setIsLoading] = useState(false)
   const [isNoData, setIsNoData] = useState(false)
-  const [vibes, setVibes] = useState<VibesTypes[]>([])
+  const [messages, setMessages] = useState<GuestMessagesType[]>([])
 
   // Hooks for Infinite Scroll
   const { inView, ref } = useInView()
 
-  const skip = vibes?.length + PAGE_LIMIT
-  console.log(user_id, 'user id')
+  const { userId } = useParams()
+
+  const skip = messages?.length + PAGE_LIMIT_GUEST
 
   const loadMoreFn = async () => {
     try {
       setIsLoading(true)
       await delay(1000)
       // If feed type then use join query otherwise normal
-      const results = isFeed
-        ? await getMoreFeedVibes(skip)
-        : await getMoreVibes({
-            user_id,
-            skip,
-          })
+      const results = await getMoreMessages({ user_id: Number(userId), skip })
 
       // When there is no data or datas are less than limit
-      if (!results.length || results.length < PAGE_LIMIT) {
+      if (!results.length || results.length < PAGE_LIMIT_GUEST) {
         setIsNoData(true)
       }
-      setVibes((prev) => [...prev, ...results])
-
+      setMessages((prev) => [...prev, ...results])
       setIsLoading(false)
     } catch (error) {
       console.log(error)
@@ -58,18 +48,22 @@ export default function LoadMoreVibes({
 
   return (
     <>
-      {!!vibes.length ? <VibesMap vibes={vibes} /> : null}
+      {!!messages.length ? <MessagesMap messages={messages} /> : null}
 
       {isLoading ? (
-        <div className="col-span-full flex justify-center">
+        <div className="flex justify-center mt-4">
           <Spinner size={38} color="light" />
         </div>
       ) : isNoData ? (
-        <p className="text-center col-span-full opacity-80">
+        <p className="text-center col-span-full opacity-80 mt-4">
           Ohh congrats!, you are at the end
         </p>
       ) : (
-        <p ref={ref} className="text-center col-span-full opacity-80">
+        <p
+          onClick={loadMoreFn}
+          ref={ref}
+          className="text-center col-span-full mt-4 opacity-80"
+        >
           Load more
         </p>
       )}

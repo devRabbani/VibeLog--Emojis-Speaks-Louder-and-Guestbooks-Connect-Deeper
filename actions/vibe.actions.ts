@@ -22,11 +22,11 @@ export const createVibe = async ({
   }
 }
 
-export const getUserVibes = async (user_id: string) => {
+export const getUserVibes = async (user_id: number) => {
   const results = await db
     .selectFrom('Vibe')
     .select(['created_at', 'emoji'])
-    .where('user_id', '=', Number(user_id))
+    .where('user_id', '=', user_id)
     .orderBy('created_at', 'desc')
     .limit(PAGE_LIMIT)
     .execute()

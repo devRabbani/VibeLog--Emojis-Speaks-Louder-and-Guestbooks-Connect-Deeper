@@ -1,12 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import {
-  useParams,
-  usePathname,
-  useRouter,
-  useSelectedLayoutSegment,
-} from 'next/navigation'
+import { useParams, usePathname } from 'next/navigation'
 
 export default function Subnav() {
   const pathname = usePathname()

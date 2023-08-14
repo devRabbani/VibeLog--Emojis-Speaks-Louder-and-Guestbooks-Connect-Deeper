@@ -11,7 +11,7 @@
 }
 
 .feedHeight {
-  min-height: calc(var(--full-height) - 56px - 28px);
+  min-height: calc(var(--full-height) - 56px - 32px);
 }
 
 /* For Tap Highlight */

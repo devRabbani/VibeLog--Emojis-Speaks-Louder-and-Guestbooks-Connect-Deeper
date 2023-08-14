@@ -1,20 +1,11 @@
 'use client'
 
 import Link from 'next/link'
-import {
-  RiLoginBoxLine,
-  RiLogoutBoxLine,
-  RiMenu2Line,
-  RiTimeLine,
-  RiUser2Fill,
-  RiUser2Line,
-  RiUser3Fill,
-} from 'react-icons/ri'
+import { RiLoginBoxLine, RiLogoutBoxLine, RiUser3Fill } from 'react-icons/ri'
 import { CgFeed } from 'react-icons/cg'
 import { usePathname } from 'next/navigation'
 import { signIn, signOut, useSession } from 'next-auth/react'
-import { ErrorInfo, useState } from 'react'
-import { migrateData, showData } from '@/lib/helper'
+import { useState } from 'react'
 import { toast } from 'sonner'
 
 export default function Nav() {
@@ -54,7 +45,7 @@ export default function Nav() {
         <Link className="text-2xl font-bold" href="/">
           VibeLog
         </Link>
-        <button onClick={() => toast.success('Hello')}>SHow Data</button>
+
         <div className="flex items-center gap-1 font-semibold">
           {pathname === '/' ? (
             session ? (
@@ -90,7 +81,7 @@ export default function Nav() {
             <button
               onClick={handleSignOut}
               disabled={isDisabled}
-              className="flex items-center justify-center gap-1 text-pink-800 disabled:opacity-50 w-20"
+              className="flex items-center justify-center gap-1 text-yellow-500 disabled:opacity-50 w-20"
             >
               <RiLogoutBoxLine /> Logout
             </button>

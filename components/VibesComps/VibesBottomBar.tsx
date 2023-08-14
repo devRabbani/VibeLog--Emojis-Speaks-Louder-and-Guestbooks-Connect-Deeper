@@ -1,6 +1,5 @@
 'use client'
 
-import { authOptions } from '@/app/api/auth/[...nextauth]/route'
 import { PAGE_LIMIT } from '@/lib/constant'
 import { useSession } from 'next-auth/react'
 import LoadMoreVibes from './loadMoreVibes'
