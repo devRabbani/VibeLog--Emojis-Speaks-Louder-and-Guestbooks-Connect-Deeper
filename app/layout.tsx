@@ -1,9 +1,9 @@
-import Nav from '@/components/Nav'
+import Nav from '@/components/Layout/Nav'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import AuthProvider from '@/components/AuthProvider'
-import ToasterClient from '@/components/ToasterClient'
+import ToasterClient from '@/components/Layout/ToasterClient'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <main className="max-w-2xl px-3 mx-auto sm:px-0">
+        <main className="max-w-2xl px-3 pb-3 mx-auto sm:px-0">
           <AuthProvider>
             <Nav />
             <section className="mt-5">{children}</section>

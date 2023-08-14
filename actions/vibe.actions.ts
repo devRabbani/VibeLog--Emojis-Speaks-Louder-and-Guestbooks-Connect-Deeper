@@ -1,5 +1,6 @@
 'use server'
 
+import { PAGE_LIMIT } from '@/lib/constant'
 import db from '@/lib/db'
 import { revalidatePath } from 'next/cache'
 
@@ -27,6 +28,51 @@ export const getUserVibes = async (user_id: string) => {
     .select(['created_at', 'emoji'])
     .where('user_id', '=', Number(user_id))
     .orderBy('created_at', 'desc')
+    .limit(PAGE_LIMIT)
     .execute()
   return results
+}
+
+export const getMoreVibes = async ({
+  user_id,
+  skip,
+}: {
+  user_id: string
+  skip: number
+}) => {
+  const result = await db
+    .selectFrom('Vibe')
+    .select(['created_at', 'emoji'])
+    .where('user_id', '=', Number(user_id))
+    .orderBy('created_at', 'desc')
+    .offset(skip)
+    .limit(PAGE_LIMIT)
+    .execute()
+
+  return result
+}
+
+export const getFeedVibes = async () => {
+  const result = await db
+    .selectFrom('Vibe')
+    .leftJoin('User', 'User.id', 'Vibe.user_id')
+    .select(['created_at', 'user_id', 'emoji', 'User.name'])
+    .orderBy('created_at', 'desc')
+    .limit(PAGE_LIMIT)
+    .execute()
+
+  return result
+}
+
+export const getMoreFeedVibes = async (skip: number) => {
+  const result = await db
+    .selectFrom('Vibe')
+    .leftJoin('User', 'User.id', 'Vibe.user_id')
+    .select(['created_at', 'user_id', 'emoji', 'User.name'])
+    .orderBy('created_at', 'desc')
+    .offset(skip)
+    .limit(PAGE_LIMIT)
+    .execute()
+
+  return result
 }

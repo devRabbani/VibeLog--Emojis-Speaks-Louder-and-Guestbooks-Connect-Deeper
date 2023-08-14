@@ -8,7 +8,9 @@ import {
   RiTimeLine,
   RiUser2Fill,
   RiUser2Line,
+  RiUser3Fill,
 } from 'react-icons/ri'
+import { CgFeed } from 'react-icons/cg'
 import { usePathname } from 'next/navigation'
 import { signIn, signOut, useSession } from 'next-auth/react'
 import { ErrorInfo, useState } from 'react'
@@ -47,7 +49,7 @@ export default function Nav() {
   console.log(session?.user, status)
 
   return (
-    <nav className="p-3 bg-teal-700 sticky top-3 rounded-md shadow-lg">
+    <nav className="p-3 bg-teal-700 sticky top-3 rounded-md shadow-lg z-50">
       <div className="flex justify-between items-center w-full">
         <Link className="text-2xl font-bold" href="/">
           VibeLog
@@ -60,15 +62,19 @@ export default function Nav() {
                 className="flex items-center gap-1 justify-center w-20"
                 href={`/profile/${session?.user?.user_id}`}
               >
-                <RiUser2Line /> Profile
+                <RiUser3Fill /> Profile
               </Link>
             ) : (
               <button
-                onClick={() => alert('You need to login first')}
+                onClick={() =>
+                  toast.error('You are not allowed!', {
+                    description: 'Pleas sign in to unlock all the features',
+                  })
+                }
                 disabled={isDisabled}
                 className="flex items-center justify-center gap-1 disabled:opacity-50 w-20"
               >
-                <RiUser2Line /> Profile
+                <RiUser3Fill /> Profile
               </button>
             )
           ) : (
@@ -76,7 +82,7 @@ export default function Nav() {
               className="flex items-center gap-1 justify-center w-20"
               href="/"
             >
-              <RiTimeLine /> Feed
+              <CgFeed /> Feed
             </Link>
           )}
           <span className="opacity-30">|</span>

@@ -17,7 +17,7 @@ const EmojiPicker = dynamic(() => import('emoji-picker-react'), {
   ),
 })
 
-export default function AddMood() {
+export default function AddVibeDialog() {
   const [isOpen, setIsOpen] = useState(false)
 
   const hideEmojiBar = () => setIsOpen(false)
@@ -29,7 +29,7 @@ export default function AddMood() {
   return (
     <button
       onClick={() => setIsOpen(true)}
-      className="fixed bottom-4 right-3 bg-teal-100 text-teal-900 rounded-full text-5xl p-3 shadow-lg sm:text-4xl transition hover:bg-slate-300 active:translate-y-1"
+      className="fixed bottom-4 right-3 bg-teal-100 text-teal-900 rounded-full text-5xl p-3 shadow-lg sm:text-4xl transition hover:bg-slate-300 active:translate-y-2 active:bg-slate-400"
     >
       <RiAddFill />
     </button>
@@ -38,10 +38,10 @@ export default function AddMood() {
 
 const EmojiBar = ({ hideEmojiBar }: { hideEmojiBar: () => void }) => {
   const { data: session } = useSession()
-  const [emoji, setEmoji] = useState<string | undefined>()
-  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [emoji, setEmoji] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
-  const selectEmoji = (emoji: string) => {
+  const selectEmoji = () => {
     toast.promise(addVibeToDB(emoji), {
       error: 'Something went please try again!',
       loading: 'Adding your vibe...',
@@ -49,16 +49,11 @@ const EmojiBar = ({ hideEmojiBar }: { hideEmojiBar: () => void }) => {
     })
   }
   const addVibeToDB = async (emoji: string) => {
-    try {
-      if (!session?.user) throw Error('No auth user found')
-      setIsLoading(true)
-      await createVibe({ id: session.user.user_id!, emoji })
-      setIsLoading(false)
-      hideEmojiBar()
-    } catch (error) {
-      console.log('Creating Vibe', error)
-      setIsLoading(false)
-    }
+    if (!session?.user) throw Error('No auth user found')
+    setIsLoading(true)
+    await createVibe({ id: session.user.user_id!, emoji })
+    setIsLoading(false)
+    hideEmojiBar()
   }
 
   return (
@@ -76,7 +71,7 @@ const EmojiBar = ({ hideEmojiBar }: { hideEmojiBar: () => void }) => {
             <p className="text-4xl">{emoji}</p>
             <button
               disabled={isLoading}
-              onClick={() => selectEmoji(emoji)}
+              onClick={selectEmoji}
               className="py-1 rounded-md font-medium flex justify-center items-center gap-1 bg-teal-700 w-20 text-teal-50 transition hover:bg-teal-800 active:translate-y-0.5 "
             >
               {isLoading ? 'Adding' : 'Add'}

@@ -1,5 +1,4 @@
-import Subnav from '@/components/SubNav'
-import Link from 'next/link'
+import Subnav from '@/components/Layout/SubNav'
 
 export default function ProfileLayout({
   children,
