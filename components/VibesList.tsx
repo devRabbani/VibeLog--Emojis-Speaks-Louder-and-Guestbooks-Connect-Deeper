@@ -13,7 +13,7 @@ interface Props {
 
 export default function VibesList({ vibes, isFeed }: Props) {
   return (
-    <div className="mt-6 grid grid-cols-3 gap-4 sm:grid-cols-4 sm:gap-y-7">
+    <div className="mt-6 grid grid-cols-3 gap-x-4 gap-y-8 sm:grid-cols-4">
       {vibes.map((vibe, i) => (
         <VibeItem data={vibe} key={i} isFeed={isFeed} />
       ))}
@@ -23,7 +23,7 @@ export default function VibesList({ vibes, isFeed }: Props) {
 
 const VibeItem = ({ data, isFeed }: { data: VibesTypes; isFeed: boolean }) => {
   return (
-    <div className="text-7xl flex flex-col justify-center w-full text-center bg-teal-800">
+    <div className="text-7xl flex flex-col justify-center w-full text-center">
       <span className="mb-2">{data.emoji}</span>
       {isFeed ? (
         <Link href="/profile" className="text-xs font-medium">
