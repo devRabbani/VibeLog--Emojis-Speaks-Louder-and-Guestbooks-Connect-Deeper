@@ -4,7 +4,6 @@ import { useInView } from 'react-intersection-observer'
 import { useEffect, useState } from 'react'
 import { PAGE_LIMIT_GUEST } from '@/lib/constant'
 import { useParams } from 'next/navigation'
-import { delay } from '@/lib/utils'
 import type { GuestMessagesType } from '@/types/utility'
 import { MessagesMap } from './MessagesList'
 import { getMoreMessages } from '@/actions/guestbook.actions'
@@ -26,7 +25,6 @@ export default function LoadMoreMessages() {
   const loadMoreFn = async () => {
     try {
       setIsLoading(true)
-      await delay(1000)
       // If feed type then use join query otherwise normal
       const results = await getMoreMessages({ user_id: Number(userId), skip })
 

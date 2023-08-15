@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react'
 import { PAGE_LIMIT } from '@/lib/constant'
 import { VibesMap } from './VibesList'
 import { getMoreFeedVibes, getMoreVibes } from '@/actions/vibe.actions'
-import { delay } from '@/lib/utils'
 import type { VibesTypes } from '@/types/utility'
 import Spinner from '../spinner'
 
@@ -29,7 +28,6 @@ export default function LoadMoreVibes({
   const loadMoreFn = async () => {
     try {
       setIsLoading(true)
-      await delay(1000)
       // If feed type then use join query otherwise normal
       const results = isFeed
         ? await getMoreFeedVibes(skip)
