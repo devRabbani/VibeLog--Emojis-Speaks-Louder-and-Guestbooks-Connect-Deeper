@@ -3,6 +3,8 @@ import { getUserData } from '@/actions/users.actions'
 import InputForm from '@/components/GuestBookComps/InputForm'
 import MessagesList from '@/components/GuestBookComps/MessagesList'
 
+export const revalidate = 120
+
 export default async function Guestbook({
   params: { userId },
 }: {

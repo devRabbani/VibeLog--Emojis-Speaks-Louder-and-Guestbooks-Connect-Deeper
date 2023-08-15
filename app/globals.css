@@ -20,9 +20,13 @@ html {
   -webkit-tap-highlight-color: transparent;
 }
 
+::-webkit-scrollbar {
+  width: 0;
+}
+
 @layer base {
   body {
-    @apply bg-teal-900 text-teal-50;
+    @apply bg-teal-900 text-teal-50 sm:bg-[#136963];
   }
 }
 

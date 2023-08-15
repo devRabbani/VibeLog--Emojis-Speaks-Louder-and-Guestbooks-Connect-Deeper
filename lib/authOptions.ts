@@ -26,7 +26,6 @@ export const authOptions: NextAuthOptions = {
       }
     },
     async session({ session, token }) {
-      console.count('Session')
       session.user.user_id = token?.user_id
       return session
     },

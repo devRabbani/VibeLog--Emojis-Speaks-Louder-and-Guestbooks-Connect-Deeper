@@ -29,7 +29,7 @@ export default function AddVibeDialog() {
   return (
     <button
       onClick={() => setIsOpen(true)}
-      className="fixed bottom-4 right-3 bg-teal-100 text-teal-900 rounded-full text-5xl p-3 shadow-lg sm:text-4xl transition hover:bg-slate-300 active:translate-y-2 active:bg-slate-400"
+      className="fixed bottom-4 right-3 bg-teal-100 text-teal-900 rounded-full text-5xl p-3 shadow-lg sm:text-4xl transition hover:bg-slate-300 active:translate-y-1 active:bg-slate-400 sm:sticky sm:ml-auto sm:block"
     >
       <RiAddFill />
     </button>

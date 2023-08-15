@@ -25,7 +25,6 @@ export default function LoadMoreVibes({
   const { inView, ref } = useInView()
 
   const skip = vibes?.length + PAGE_LIMIT
-  console.log(user_id, 'user id')
 
   const loadMoreFn = async () => {
     try {

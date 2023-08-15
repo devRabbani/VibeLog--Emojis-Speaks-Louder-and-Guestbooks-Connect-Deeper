@@ -10,6 +10,8 @@ interface Props {
   }
 }
 
+export const revalidate = 120
+
 export default async function Profile({ params: { userId } }: Props) {
   const userNamePromise = getUserData(Number(userId))
   const vibesListPromise = getUserVibes(Number(userId))
@@ -20,7 +22,7 @@ export default async function Profile({ params: { userId } }: Props) {
   ])
 
   return (
-    <div className="bg-teal-700 mt-1 rounded-md shadow-sm p-3 pb-4 profileHeight">
+    <div className="bg-teal-700 mt-1 rounded-md shadow-sm p-3 pb-4 sm:relative profileHeight">
       <div className="flex justify-between gap-1 mb-2 border-b border-teal-800 pb-2 items-center">
         <p>
           Vibes of <span className="font-semibold capitalize">{userName}</span>
