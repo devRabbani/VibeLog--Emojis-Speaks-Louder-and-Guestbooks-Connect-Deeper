@@ -18,7 +18,7 @@ export default function ShareBtn({
     const shareData = {
       title: `VibeLogs of ${username}`,
       text: `Checkout vibes of ${username} and leave words for him`,
-      url: `https://vibelog.vercel.app/profile/${user_id}`,
+      url: `https://vibelog.canwebe.in/profile/${user_id}`,
     }
     if (navigator.canShare(shareData)) {
       await navigator.share(shareData)
@@ -39,8 +39,9 @@ export default function ShareBtn({
 
   return (
     <button
+      disabled={isLoading}
       onClick={handleShareToast}
-      className="flex items-center gap-1 text-2xl transition active:translate-y-0.5 hover:text-teal-100"
+      className="flex items-center gap-1 text-2xl transition disabled:opacity-60 active:translate-y-0.5 hover:text-teal-100"
     >
       <RiShareBoxFill />
     </button>
