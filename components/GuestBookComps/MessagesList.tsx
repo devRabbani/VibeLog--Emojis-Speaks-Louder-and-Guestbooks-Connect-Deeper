@@ -29,19 +29,28 @@ export const MessagesMap = ({ messages }: Props) => {
 }
 
 const MessageCard = ({ message }: { message: GuestMessagesType }) => {
+  const currentDate = moment()
+  const createdAt = moment(message.created_at)
+
+  const difference = currentDate.diff(createdAt, 'hours')
+
   return (
     <div className="border-b border-teal-800 py-3">
-      <Link
-        className="font-semibold capitalize text-sm opacity-70"
-        href={`/profile/${message.guest_id}`}
-      >
-        {message.name} :
-      </Link>
+      <div className="flex items-baseline gap-1 flex-wrap">
+        <Link
+          className="font-semibold capitalize text-xs opacity-80"
+          href={`/profile/${message.guest_id}`}
+        >
+          {message.name}
+        </Link>
+        <p className="opacity-60 text-xs font-light">
+          {difference > 16
+            ? `on ${createdAt.format('DD MMM, YY')}`
+            : createdAt.fromNow()}
+        </p>
+      </div>
 
-      <p className="text-sm mb-1">{message.message}</p>
-      <p className="opacity-60 text-xs ">
-        Written on {moment(message.created_at).format('DD MMM, YY')}
-      </p>
+      <p className="mt-1 ">{message.message}</p>
     </div>
   )
 }

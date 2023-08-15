@@ -11,5 +11,6 @@ export default function AddVibeBtn({ paramsId }: { paramsId: string }) {
   if (session?.user.user_id === Number(paramsId)) {
     return <AddVibeDialog />
   }
-  return <AddVibeDialog />
+
+  return
 }
