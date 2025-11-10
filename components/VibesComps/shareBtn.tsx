@@ -41,9 +41,10 @@ export default function ShareBtn({
     <button
       disabled={isLoading}
       onClick={handleShareToast}
-      className="flex items-center gap-1 text-2xl transition disabled:opacity-60 active:translate-y-0.5 hover:text-teal-100"
+      className="flex items-center gap-2 rounded-full bg-white/80 px-4 py-2 text-sm font-semibold text-slate-700 shadow hover:scale-[1.02] transition disabled:opacity-60 active:translate-y-0.5"
     >
-      <RiShareBoxFill />
+      Share profile
+      <RiShareBoxFill className="text-lg" />
     </button>
   )
 }

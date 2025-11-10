@@ -53,14 +53,14 @@ export default function LoadMoreMessages() {
           <Spinner size={38} color="light" />
         </div>
       ) : isNoData ? (
-        <p className="text-center col-span-full opacity-80 mt-4">
-          Ohh congrats!, you are at the end
+        <p className="text-center col-span-full text-sm text-slate-400 mt-4">
+          You have seen every sweet message! 🎉
         </p>
       ) : (
         <p
           onClick={loadMoreFn}
           ref={ref}
-          className="text-center col-span-full mt-4 opacity-80"
+          className="text-center col-span-full mt-4 text-sm text-slate-500 tracking-[0.4em] uppercase cursor-pointer"
         >
           Load more
         </p>

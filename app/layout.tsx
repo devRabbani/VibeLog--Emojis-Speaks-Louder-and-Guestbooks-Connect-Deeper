@@ -1,11 +1,11 @@
 import Nav from '@/components/Layout/Nav'
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Fredoka } from 'next/font/google'
 import AuthProvider from '@/components/AuthProvider'
 import ToasterClient from '@/components/Layout/ToasterClient'
 
-const inter = Inter({ subsets: ['latin'] })
+const fredoka = Fredoka({ subsets: ['latin'], weight: ['400', '500', '600'] })
 
 export const metadata: Metadata = {
   title: 'VibeLog | Emojis Speaks Louder and Guestbooks Connect Deeper',
@@ -20,11 +20,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <main className="max-w-2xl px-3 pb-3 mx-auto sm:px-0">
+      <body className={`${fredoka.className} antialiased`}>
+        <main className="playful-shell max-w-3xl px-4 pb-6 mx-auto sm:px-6">
           <AuthProvider>
             <Nav />
-            <section className="mt-5">{children}</section>
+            <section className="mt-6 space-y-5">{children}</section>
           </AuthProvider>
           <ToasterClient />
         </main>

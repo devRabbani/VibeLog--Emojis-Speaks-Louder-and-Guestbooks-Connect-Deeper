@@ -22,11 +22,17 @@ export default async function Profile({ params: { userId } }: Props) {
   ])
 
   return (
-    <div className="bg-teal-700 mt-1 rounded-md shadow-sm p-3 pb-4 sm:relative profileHeight">
-      <div className="flex justify-between gap-1 mb-2 border-b border-teal-800 pb-2 items-center">
-        <p>
-          Vibes of <span className="font-semibold capitalize">{userName}</span>
-        </p>
+    <div className="card-surface profileHeight border border-white/70 px-7 pt-5 pb-10 sm:relative">
+      <div className="flex flex-col gap-3 mb-5 border-b border-slate-200 pb-4 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+        <div>
+          <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
+            Personal vibe stream
+          </p>
+          <p className="text-lg text-slate-900">
+            Vibes of{' '}
+            <span className="font-semibold capitalize">{userName}</span>
+          </p>
+        </div>
         <ShareBtn username={userName} user_id={userId} />
       </div>
       <VibesList vibes={vibesList} isFeed={false} />

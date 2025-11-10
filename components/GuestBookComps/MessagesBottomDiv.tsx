@@ -16,8 +16,8 @@ export default function MessagesBottomDiv({
 
   if (status === 'unauthenticated')
     return (
-      <p className="col-span-full text-center opacity-75">
-        Sign in to see more
+      <p className="col-span-full text-center text-sm text-slate-400">
+        Sign in to see more ✨
       </p>
     )
 

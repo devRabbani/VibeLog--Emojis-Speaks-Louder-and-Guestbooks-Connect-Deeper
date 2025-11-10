@@ -38,17 +38,23 @@ export default function Nav() {
   }
 
   return (
-    <nav className="p-3 bg-teal-700 sticky top-3 rounded-md shadow-lg z-50 sm:border-teal-400 sm:border">
-      <div className="flex justify-between items-center w-full">
-        <Link className="text-2xl font-bold" href="/">
+    <nav className="card-surface rounded-shell sticky top-4 z-50 px-5 py-4 border border-white/60 shadow-[0_18px_60px_rgba(15,23,42,0.18)] sm:px-6">
+      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <Link
+          className="flex items-center gap-3 text-3xl font-semibold text-slate-900"
+          href="/"
+        >
+          <span className="inline-flex h-11 w-11 items-center justify-center rounded-card bg-teal-600 text-white text-2xl font-black leading-none shadow-inner">
+            V
+          </span>
           VibeLog
         </Link>
 
-        <div className="flex items-center gap-1 font-semibold">
+        <div className="flex flex-wrap items-center gap-2 font-semibold text-sm sm:text-base">
           {pathname === '/' ? (
             session ? (
               <Link
-                className="flex items-center gap-1 justify-center w-20"
+                className="bubble-border bg-white/80 px-4 py-2 flex items-center gap-1 justify-center text-teal-700 hover:text-teal-900 hover:border-teal-600/30 transition"
                 href={`/profile/${session?.user?.user_id}`}
               >
                 <RiUser3Fill /> Profile
@@ -61,25 +67,24 @@ export default function Nav() {
                   })
                 }
                 disabled={isDisabled}
-                className="flex items-center justify-center gap-1 disabled:opacity-50 w-20"
+                className="bubble-border bg-white/80 px-4 py-2 flex items-center justify-center gap-1 disabled:opacity-50 text-teal-700 hover:text-teal-900 hover:border-teal-600/30 transition"
               >
                 <RiUser3Fill /> Profile
               </button>
             )
           ) : (
             <Link
-              className="flex items-center gap-1 justify-center w-20"
+              className="bubble-border bg-white/80 px-4 py-2 flex items-center gap-1 justify-center text-teal-700 hover:text-teal-900 hover:border-teal-600/30 transition"
               href="/"
             >
               <CgFeed /> Feed
             </Link>
           )}
-          <span className="opacity-30">|</span>
           {session ? (
             <button
               onClick={handleSignOut}
               disabled={isDisabled}
-              className="flex items-center justify-center gap-1 text-yellow-500 disabled:opacity-50 w-20"
+              className="px-5 py-2 rounded-full bg-gradient-to-r from-amber-500 via-rose-500 to-pink-500 text-white shadow-md flex items-center justify-center gap-1 disabled:opacity-50 transition hover:brightness-95"
             >
               <RiLogoutBoxLine /> Logout
             </button>
@@ -87,7 +92,7 @@ export default function Nav() {
             <button
               onClick={handleSignIn}
               disabled={isDisabled}
-              className="flex items-center justify-center gap-1 disabled:opacity-50 w-20"
+              className="px-5 py-2 rounded-full bg-gradient-to-r from-sky-300 via-teal-300 to-emerald-300 text-slate-900 shadow-md flex items-center justify-center gap-1 disabled:opacity-50"
             >
               <RiLoginBoxLine /> Login
             </button>

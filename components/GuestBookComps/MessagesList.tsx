@@ -10,7 +10,9 @@ type Props = {
 export default function MessagesList({ messages }: Props) {
   if (!messages?.length) {
     return (
-      <p className="text-center mt-[20vh] opacity-50">No one signed it yet</p>
+      <p className="text-center mt-[15vh] text-lg text-slate-400">
+        No one signed it yet. Be the first to drop a sweet note! 💌
+      </p>
     )
   }
 
@@ -35,22 +37,24 @@ const MessageCard = ({ message }: { message: GuestMessagesType }) => {
   const difference = currentDate.diff(createdAt, 'hours')
 
   return (
-    <div className="border-b border-teal-800 py-3">
+    <div className="bg-white/80 rounded-card px-4 py-3 mt-4 shadow-[0_12px_28px_rgba(15,23,42,0.08)] border border-white">
       <div className="flex items-baseline gap-1 flex-wrap">
         <Link
-          className="font-semibold capitalize text-xs opacity-80"
+          className="font-semibold capitalize text-xs text-slate-600"
           href={`/profile/${message.guest_id}`}
         >
           {message.name}
         </Link>
-        <p className="opacity-60 text-xs font-light">
+        <p className="text-slate-400 text-xs font-medium">
           {difference > 16
             ? `on ${createdAt.format('DD MMM, YY')}`
             : createdAt.fromNow()}
         </p>
       </div>
 
-      <p className="mt-1 ">{message.message}</p>
+      <p className="mt-2 text-slate-800 text-sm leading-relaxed">
+        {message.message}
+      </p>
     </div>
   )
 }

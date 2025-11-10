@@ -29,7 +29,8 @@ export default function AddVibeDialog() {
   return (
     <button
       onClick={() => setIsOpen(true)}
-      className="fixed bottom-4 right-3 bg-teal-100 text-teal-900 rounded-full text-5xl p-3 shadow-lg sm:text-4xl transition hover:bg-slate-300 active:translate-y-1 active:bg-slate-400 sm:sticky sm:ml-auto sm:block"
+      aria-label="Add a new vibe"
+      className="fixed bottom-5 right-4 bg-gradient-to-r from-fuchsia-300 via-rose-200 to-amber-200 text-slate-900 rounded-full text-4xl p-3 shadow-[0_20px_35px_rgba(244,114,182,0.35)] sm:text-4xl transition hover:scale-105 active:translate-y-1 sm:sticky sm:ml-auto sm:block"
     >
       <RiAddFill />
     </button>
@@ -57,12 +58,18 @@ const EmojiBar = ({ hideEmojiBar }: { hideEmojiBar: () => void }) => {
   }
 
   return (
-    <div className="fixed bottom-0 left-1 right-1 max-w-xl mx-auto bg-teal-50 shadow-xl rounded-t-md px-1 ">
-      <div className="flex items-center justify-between px-4 h-14 ">
+    <div
+      className="fixed bottom-0 left-0 right-0 mx-auto max-w-2xl bg-white/95 shadow-[0_-20px_40px_rgba(15,23,42,0.15)] px-4 pb-4 backdrop-blur"
+      style={{
+        borderTopLeftRadius: 'var(--radius-shell)',
+        borderTopRightRadius: 'var(--radius-shell)',
+      }}
+    >
+      <div className="flex items-center justify-between border-b border-slate-200 py-4">
         <button
           disabled={isLoading}
           onClick={hideEmojiBar}
-          className="py-1 rounded-md text-teal-950 font-medium flex justify-center items-center gap-1 w-20 transition bg-teal-100 hover:bg-teal-200 active:translate-y-0.5"
+          className="py-2 rounded-full text-slate-700 font-medium flex justify-center items-center gap-1 px-5 transition bg-slate-100 hover:bg-slate-200 active:translate-y-0.5 disabled:opacity-60"
         >
           Close
         </button>
@@ -72,7 +79,7 @@ const EmojiBar = ({ hideEmojiBar }: { hideEmojiBar: () => void }) => {
             <button
               disabled={isLoading}
               onClick={selectEmoji}
-              className="py-1 rounded-md font-medium flex justify-center items-center gap-1 bg-teal-700 w-20 text-teal-50 transition hover:bg-teal-800 active:translate-y-0.5 "
+              className="py-2 rounded-full font-semibold flex justify-center items-center gap-1 bg-slate-900 px-6 text-white transition hover:opacity-90 active:translate-y-0.5 disabled:opacity-60"
             >
               {isLoading ? 'Adding' : 'Add'}
             </button>
@@ -88,7 +95,7 @@ const EmojiBar = ({ hideEmojiBar }: { hideEmojiBar: () => void }) => {
         previewConfig={{
           showPreview: false,
         }}
-        searchPlaceHolder="Whats your current mood"
+        searchPlaceHolder="Search an emoji that describes your vibe"
         onEmojiClick={(data) => setEmoji(data.emoji)}
         emojiStyle={EmojiStyle.NATIVE}
       />

@@ -62,11 +62,14 @@ export default function LoadMoreVibes({
           <Spinner size={38} color="light" />
         </div>
       ) : isNoData ? (
-        <p className="text-center col-span-full opacity-80">
-          Ohh congrats!, you are at the end
+        <p className="text-center col-span-full text-sm text-slate-400">
+          You caught up with every vibe! 🎉
         </p>
       ) : (
-        <p ref={ref} className="text-center col-span-full opacity-80">
+        <p
+          ref={ref}
+          className="text-center col-span-full text-sm text-slate-500 tracking-[0.4em] uppercase"
+        >
           Load more
         </p>
       )}

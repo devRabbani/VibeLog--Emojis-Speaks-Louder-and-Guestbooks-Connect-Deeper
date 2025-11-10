@@ -64,22 +64,27 @@ export default function InputForm({ username }: { username: string }) {
   }
 
   return (
-    <form className="mb-4" onSubmit={handleMessage}>
-      <label className="text-sm opacity-85" htmlFor="comment">
+    <form
+      className="mb-6 rounded-card bg-gradient-to-br from-rose-50 via-white to-sky-50 p-5 shadow-inner"
+      onSubmit={handleMessage}
+    >
+      <label className="text-xs uppercase tracking-[0.3em] text-slate-400" htmlFor="comment">
         Some words for{' '}
-        <span className="font-semibold capitalize">{username}</span>
+        <span className="font-semibold capitalize text-slate-700">
+          {username}
+        </span>
       </label>
       <textarea
         ref={messageRef}
-        className="bg-teal-800 w-full mt-2 mb-1 p-2 rounded-md border border-teal-800 placeholder:opacity-60 focus:border-teal-950 focus:outline-0"
+        className="bg-white/80 w-full mt-2 mb-3 p-3 rounded-control border border-slate-200 placeholder:opacity-60 focus:border-slate-500 focus:outline-none shadow-[inset_0_2px_8px_rgba(15,23,42,0.08)]"
         id="comment"
         rows={2}
-        placeholder="Type something about...."
+        placeholder="Tell them how awesome they are..."
       />
       <button
         type="submit"
         disabled={isLoading}
-        className="bg-teal-100 text-teal-900 w-28 rounded-md p-2 flex items-center justify-center gap-1 transition active:translate-y-1 hover:bg-teal-200 disabled:opacity-70"
+        className="bg-gradient-to-r from-teal-300 via-sky-300 to-indigo-300 text-slate-900 px-6 py-2 rounded-full flex items-center justify-center gap-1 font-semibold transition active:translate-y-1 hover:scale-[1.02] disabled:opacity-70"
       >
         {isLoading ? (
           <>

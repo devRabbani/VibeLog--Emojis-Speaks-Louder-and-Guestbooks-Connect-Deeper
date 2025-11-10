@@ -12,15 +12,15 @@ export default function Subnav() {
   const isMoodPath = pathname === moodPath
 
   return (
-    <div className="grid grid-cols-2 p-[5px] bg-teal-700 shadow-sm rounded-md text-center font-semibold">
+    <div className="grid grid-cols-2 p-[5px] bg-teal-700 shadow-sm rounded-card text-center font-semibold">
       <Link
-        className={`${isMoodPath ? 'bg-teal-800' : ''} p-[0.5rem] rounded-md`}
+        className={`${isMoodPath ? 'bg-teal-800' : ''} p-[0.5rem] rounded-card`}
         href={moodPath}
       >
         Vibe
       </Link>
       <Link
-        className={`${isMoodPath ? '' : 'bg-teal-800 '} p-[0.5rem] rounded-md`}
+        className={`${isMoodPath ? '' : 'bg-teal-800 '} p-[0.5rem] rounded-card`}
         href={`${moodPath}/guestbook`}
       >
         Guestbook

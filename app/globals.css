@@ -4,6 +4,12 @@
 
 :root {
   --full-height: 100vh;
+  --bg-one: #fdf5ff;
+  --bg-two: #fef3c7;
+  --bg-three: #e0f2fe;
+  --radius-shell: 24px;
+  --radius-card: 16px;
+  --radius-control: 12px;
 }
 
 .profileHeight {
@@ -26,7 +32,23 @@ html {
 
 @layer base {
   body {
-    @apply bg-teal-900 text-teal-50 sm:bg-[#136963];
+    @apply text-slate-900;
+    background: radial-gradient(
+        circle at 10% 20%,
+        rgba(255, 235, 210, 0.6) 0%,
+        transparent 35%
+      ),
+      radial-gradient(
+        circle at 90% 10%,
+        rgba(204, 255, 239, 0.6) 0%,
+        transparent 45%
+      ),
+      radial-gradient(
+        circle at 50% 80%,
+        rgba(205, 219, 255, 0.55) 0%,
+        transparent 40%
+      ),
+      linear-gradient(135deg, var(--bg-one), var(--bg-two) 45%, var(--bg-three));
   }
 }
 
@@ -34,4 +56,53 @@ html {
   :root {
     --full-height: 100svh;
   }
+}
+
+.playful-shell {
+  position: relative;
+  isolation: isolate;
+}
+
+.playful-shell::before,
+.playful-shell::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  border-radius: 32px;
+  opacity: 0.55;
+  filter: blur(70px);
+}
+
+.playful-shell::before {
+  background: radial-gradient(circle, rgba(248, 113, 113, 0.6), transparent);
+  transform: translate(-40%, -20%);
+}
+
+.playful-shell::after {
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.6), transparent);
+  transform: translate(30%, 20%);
+}
+
+.card-surface {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.85), #ffffff);
+  box-shadow: 0 20px 45px rgba(72, 53, 63, 0.12);
+  border-radius: var(--radius-shell);
+}
+
+.bubble-border {
+  border: 2px dashed rgba(15, 118, 110, 0.15);
+  border-radius: 9999px;
+}
+
+.rounded-shell {
+  border-radius: var(--radius-shell);
+}
+
+.rounded-card {
+  border-radius: var(--radius-card);
+}
+
+.rounded-control {
+  border-radius: var(--radius-control);
 }

@@ -11,7 +11,7 @@ export default function error({
   reset: () => void
 }) {
   return (
-    <div className="grid place-content-center bg-teal-700 mt-1 rounded-md shadow-sm profileHeight">
+    <div className="grid place-content-center bg-teal-700 mt-1 rounded-shell shadow-sm profileHeight">
       <div className="flex flex-col items-center justify-center -mt-20 ">
         <Image src={errorImg} alt="Error" width={200} className="opacity-70" />
         <p className="opacity-50 text-sm capitalize sm:text-base">
