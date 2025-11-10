@@ -44,7 +44,7 @@ export default function AddVibeDialog() {
       <button
         onClick={handleOpen}
         aria-label="Add a new vibe"
-        className="fixed bottom-6 left-1/2 z-30 -translate-x-1/2 rounded-full bg-teal-600 text-white text-4xl p-4 shadow-[0_18px_30px_rgba(13,148,136,0.35)] transition hover:bg-teal-700 active:translate-y-1 sm:text-4xl sm:p-5"
+        className="fixed bottom-6 left-1/2 z-30 -translate-x-1/2 rounded-full bg-teal-600 bg-gradient-to-br from-teal-600 to-emerald-500 text-white text-4xl p-4 shadow-[0_18px_30px_rgba(13,148,136,0.35)] transition hover:brightness-95 active:translate-y-1 sm:text-4xl sm:p-5"
       >
         <RiAddFill />
       </button>

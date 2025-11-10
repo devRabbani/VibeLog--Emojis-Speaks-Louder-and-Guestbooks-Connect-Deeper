@@ -19,7 +19,7 @@ export default async function Profile({ params: { userId } }: Props) {
     userNamePromise,
     vibesListPromise,
   ])
-  throw new Error('asd')
+  
   return (
     <>
       <div className="flex flex-col gap-3 mb-5 border-b border-slate-200 pb-4 sm:flex-row sm:items-center sm:justify-between sm:gap-4">

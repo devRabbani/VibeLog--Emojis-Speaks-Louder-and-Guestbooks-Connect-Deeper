@@ -92,7 +92,7 @@ export default function Nav() {
             <button
               onClick={handleSignIn}
               disabled={isDisabled}
-              className="px-5 py-2 rounded-full bg-gradient-to-r from-sky-300 via-teal-300 to-emerald-300 text-slate-900 shadow-md flex items-center justify-center gap-1 disabled:opacity-50"
+              className="px-5 py-2 rounded-full bg-gradient-to-r from-teal-600 to-emerald-500 text-white shadow-md flex items-center justify-center gap-1 disabled:opacity-50 transition hover:brightness-95"
             >
               <RiLoginBoxLine /> Login
             </button>
