@@ -22,10 +22,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${fredoka.className} antialiased`}>
-        <main className="playful-shell relative max-w-3xl px-4 pb-10 mx-auto sm:px-6">
+        <main className="relative max-w-3xl px-4 pb-10 mx-auto sm:px-6 gap-7 min-h-screen flex flex-col">
           <AuthProvider>
             <Nav />
-            <section className="mt-6 space-y-5">{children}</section>
+             {children}
             <AddVibeDialog />
           </AuthProvider>
           <ToasterClient />

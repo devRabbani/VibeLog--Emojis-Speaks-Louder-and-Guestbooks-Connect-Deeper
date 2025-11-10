@@ -3,21 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --full-height: 100vh;
   --bg-one: #fdf5ff;
   --bg-two: #fef3c7;
   --bg-three: #e0f2fe;
   --radius-shell: 24px;
   --radius-card: 16px;
   --radius-control: 12px;
-}
-
-.profileHeight {
-  min-height: calc(var(--full-height) - 56px - 12px - 36px - 54.4px);
-}
-
-.feedHeight {
-  min-height: calc(var(--full-height) - 56px - 32px);
 }
 
 /* For Tap Highlight */
@@ -58,31 +49,6 @@ html {
   }
 }
 
-.playful-shell {
-  position: relative;
-  isolation: isolate;
-}
-
-.playful-shell::before,
-.playful-shell::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-  border-radius: 32px;
-  opacity: 0.55;
-  filter: blur(70px);
-}
-
-.playful-shell::before {
-  background: radial-gradient(circle, rgba(248, 113, 113, 0.6), transparent);
-  transform: translate(-40%, -20%);
-}
-
-.playful-shell::after {
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.6), transparent);
-  transform: translate(30%, 20%);
-}
 
 .card-surface {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.85), #ffffff);
