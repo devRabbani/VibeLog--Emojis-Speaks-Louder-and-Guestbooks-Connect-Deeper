@@ -7,6 +7,7 @@ import { useSession } from 'next-auth/react'
 import Spinner from '../spinner'
 import { useParams } from 'next/navigation'
 import { addGuestMessage } from '@/actions/guestbook.actions'
+import { RiSendPlane2Line } from 'react-icons/ri'
 
 export default function InputForm({ username }: { username: string }) {
   // Local States for loading
@@ -65,33 +66,35 @@ export default function InputForm({ username }: { username: string }) {
 
   return (
     <form
-      className="mb-6 rounded-card bg-gradient-to-br from-rose-50 via-white to-sky-50 p-5 shadow-inner"
+      className="mb-6 rounded-card border border-teal-600/20 bg-white p-4 shadow-sm"
       onSubmit={handleMessage}
     >
-      <label className="text-xs uppercase tracking-[0.3em] text-slate-400" htmlFor="comment">
-        Some words for{' '}
-        <span className="font-semibold capitalize text-slate-700">
+      <label className="text-sm text-slate-600" htmlFor="guest-message">
+        Leave a note for{' '}
+        <span className="font-semibold capitalize text-slate-900">
           {username}
         </span>
       </label>
       <textarea
         ref={messageRef}
-        className="bg-white/80 w-full mt-2 mb-3 p-3 rounded-control border border-slate-200 placeholder:opacity-60 focus:border-slate-500 focus:outline-none shadow-[inset_0_2px_8px_rgba(15,23,42,0.08)]"
-        id="comment"
-        rows={2}
+        className="mt-3 mb-3 w-full rounded-card border border-teal-600/30 bg-white p-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-200/70"
+        id="guest-message"
+        rows={3}
         placeholder="Tell them how awesome they are..."
       />
       <button
         type="submit"
         disabled={isLoading}
-        className="bg-gradient-to-r from-teal-300 via-sky-300 to-indigo-300 text-slate-900 px-6 py-2 rounded-full flex items-center justify-center gap-1 font-semibold transition active:translate-y-1 hover:scale-[1.02] disabled:opacity-70"
+        className="inline-flex items-center gap-2 rounded-card border border-teal-600/40 bg-teal-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-teal-700 hover:border-teal-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-200 disabled:opacity-70"
       >
         {isLoading ? (
           <>
-            <Spinner color="deep" /> Adding
+            <Spinner color="light" /> Sending
           </>
         ) : (
-          ' Add'
+          <>
+            <RiSendPlane2Line /> Add note
+          </>
         )}
       </button>
     </form>

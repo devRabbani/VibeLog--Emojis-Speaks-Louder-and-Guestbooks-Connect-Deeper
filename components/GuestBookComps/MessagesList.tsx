@@ -37,22 +37,22 @@ const MessageCard = ({ message }: { message: GuestMessagesType }) => {
   const difference = currentDate.diff(createdAt, 'hours')
 
   return (
-    <div className="bg-white/80 rounded-card px-4 py-3 mt-4 shadow-[0_12px_28px_rgba(15,23,42,0.08)] border border-white">
-      <div className="flex items-baseline gap-1 flex-wrap">
+    <div className="rounded-card border border-slate-200 bg-white px-4 py-3 mt-3 shadow-sm">
+      <div className="flex items-baseline gap-2 flex-wrap">
         <Link
-          className="font-semibold capitalize text-xs text-slate-600"
+          className="font-semibold capitalize text-sm text-slate-800 hover:text-teal-800 underline-offset-4 hover:underline transition-colors"
           href={`/profile/${message.guest_id}`}
         >
           {message.name}
         </Link>
         <p className="text-slate-400 text-xs font-medium">
           {difference > 16
-            ? `on ${createdAt.format('DD MMM, YY')}`
+            ? createdAt.format('DD MMM, YY')
             : createdAt.fromNow()}
         </p>
       </div>
 
-      <p className="mt-2 text-slate-800 text-sm leading-relaxed">
+      <p className="mt-2 text-slate-700 text-sm leading-relaxed">
         {message.message}
       </p>
     </div>

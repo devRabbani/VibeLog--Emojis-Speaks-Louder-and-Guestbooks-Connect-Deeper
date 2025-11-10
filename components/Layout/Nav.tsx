@@ -38,10 +38,10 @@ export default function Nav() {
   }
 
   return (
-    <nav className="card-surface rounded-shell sticky top-4 z-50 px-5 py-4 border border-white/60 shadow-[0_18px_60px_rgba(15,23,42,0.18)] sm:px-6">
+    <nav className="card-surface rounded-shell sticky top-4 z-50 px-5 py-3.5 border border-white/60 shadow-[0_18px_60px_rgba(15,23,42,0.18)]">
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <Link
-          className="flex items-center gap-3 text-3xl font-semibold text-slate-900"
+          className="flex items-center gap-2.5 text-3xl font-semibold text-slate-900"
           href="/"
         >
           <span className="inline-flex h-11 w-11 items-center justify-center rounded-card bg-teal-600 text-white text-2xl font-black leading-none shadow-inner">

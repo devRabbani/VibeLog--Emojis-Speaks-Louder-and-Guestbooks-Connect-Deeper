@@ -5,7 +5,7 @@ export default async function Home() {
   const vibes = await getFeedVibes()
 
   return (
-    <div className="card-surface feedHeight border border-white/70 px-7 pt-6 pb-10">
+    <div className="card-surface feedHeight border border-white/70 p-7 pb-10">
       <div className="flex items-center justify-between border-b border-slate-200 pb-4 mb-4 gap-3">
         <div>
           <p className="text-sm uppercase tracking-[0.3em] text-slate-400">

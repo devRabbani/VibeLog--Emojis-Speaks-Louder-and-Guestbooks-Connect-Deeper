@@ -18,7 +18,7 @@ export default function VibesList({ vibes, isFeed }: Props) {
   }
 
   return (
-    <div className="mt-8 grid grid-cols-2 gap-4 px-2 sm:grid-cols-4 sm:px-4">
+    <div className="mt-8 grid grid-cols-2 sm:grid-cols-4">
       <VibesMap vibes={vibes} />
       <VibesBottomBar vibesLength={vibes.length} isFeed={isFeed} />
     </div>
