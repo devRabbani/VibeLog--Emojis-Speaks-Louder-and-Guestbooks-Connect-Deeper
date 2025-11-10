@@ -19,26 +19,46 @@ const EmojiPicker = dynamic(() => import('emoji-picker-react'), {
 
 export default function AddVibeDialog() {
   const [isOpen, setIsOpen] = useState(false)
+  const { data: session } = useSession()
+
+  const sessionUserId = session?.user?.user_id
 
   const hideEmojiBar = () => setIsOpen(false)
 
-  if (isOpen) {
-    return <EmojiBar hideEmojiBar={hideEmojiBar} />
+  const handleOpen = () => {
+    if (!sessionUserId) {
+      toast.error('Sign in required', {
+        description: 'You need to sign in to add a vibe.',
+      })
+      return
+    }
+    setIsOpen(true)
   }
 
   return (
-    <button
-      onClick={() => setIsOpen(true)}
-      aria-label="Add a new vibe"
-      className="fixed bottom-5 right-4 bg-gradient-to-r from-fuchsia-300 via-rose-200 to-amber-200 text-slate-900 rounded-full text-4xl p-3 shadow-[0_20px_35px_rgba(244,114,182,0.35)] sm:text-4xl transition hover:scale-105 active:translate-y-1 sm:sticky sm:ml-auto sm:block"
-    >
-      <RiAddFill />
-    </button>
+    <>
+      {isOpen && sessionUserId ? (
+        <EmojiBar hideEmojiBar={hideEmojiBar} userId={sessionUserId} />
+      ) : null}
+
+      <button
+        onClick={handleOpen}
+        aria-label="Add a new vibe"
+        className="fixed bottom-6 left-1/2 z-30 -translate-x-1/2 rounded-full bg-teal-600 text-white text-4xl p-4 shadow-[0_18px_30px_rgba(13,148,136,0.35)] transition hover:bg-teal-700 active:translate-y-1 sm:text-4xl sm:p-5"
+      >
+        <RiAddFill />
+      </button>
+    </>
   )
 }
 
-const EmojiBar = ({ hideEmojiBar }: { hideEmojiBar: () => void }) => {
-  const { data: session } = useSession()
+const EmojiBar = ({
+  hideEmojiBar,
+  userId,
+}: {
+  hideEmojiBar: () => void
+  userId: number
+}) => {
   const [emoji, setEmoji] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
@@ -50,22 +70,21 @@ const EmojiBar = ({ hideEmojiBar }: { hideEmojiBar: () => void }) => {
     })
   }
   const addVibeToDB = async (emoji: string) => {
-    if (!session?.user) throw Error('No auth user found')
     setIsLoading(true)
-    await createVibe({ id: session.user.user_id!, emoji })
+    await createVibe({ id: userId, emoji })
     setIsLoading(false)
     hideEmojiBar()
   }
 
   return (
     <div
-      className="fixed bottom-0 left-0 right-0 mx-auto max-w-2xl bg-white/95 shadow-[0_-20px_40px_rgba(15,23,42,0.15)] px-4 pb-4 backdrop-blur"
+      className="fixed bottom-0 left-0 right-0 mx-auto max-w-2xl bg-white/95 shadow-[0_-20px_40px_rgba(15,23,42,0.15)] z-40 px-4 pb-4 backdrop-blur"
       style={{
         borderTopLeftRadius: 'var(--radius-shell)',
         borderTopRightRadius: 'var(--radius-shell)',
       }}
     >
-      <div className="flex items-center justify-between border-b border-slate-200 py-4">
+      <div className="flex items-center justify-between pt-4 pb-3.5">
         <button
           disabled={isLoading}
           onClick={hideEmojiBar}
@@ -79,7 +98,7 @@ const EmojiBar = ({ hideEmojiBar }: { hideEmojiBar: () => void }) => {
             <button
               disabled={isLoading}
               onClick={selectEmoji}
-              className="py-2 rounded-full font-semibold flex justify-center items-center gap-1 bg-slate-900 px-6 text-white transition hover:opacity-90 active:translate-y-0.5 disabled:opacity-60"
+              className="p-2 rounded-full font-semibold flex justify-center items-center gap-1 bg-teal-600 w-24 text-white transition hover:bg-teal-700 active:translate-y-0.5 disabled:opacity-60"
             >
               {isLoading ? 'Adding' : 'Add'}
             </button>

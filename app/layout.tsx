@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import { Fredoka } from 'next/font/google'
 import AuthProvider from '@/components/AuthProvider'
 import ToasterClient from '@/components/Layout/ToasterClient'
+import AddVibeDialog from '@/components/AddVibeComps/AddVibeDialog'
 
 const fredoka = Fredoka({ subsets: ['latin'], weight: ['400', '500', '600'] })
 
@@ -21,10 +22,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${fredoka.className} antialiased`}>
-        <main className="playful-shell max-w-3xl px-4 pb-6 mx-auto sm:px-6">
+        <main className="playful-shell relative max-w-3xl px-4 pb-10 mx-auto sm:px-6">
           <AuthProvider>
             <Nav />
             <section className="mt-6 space-y-5">{children}</section>
+            <AddVibeDialog />
           </AuthProvider>
           <ToasterClient />
         </main>

@@ -1,6 +1,5 @@
 import { getUserData } from '@/actions/users.actions'
 import { getUserVibes } from '@/actions/vibe.actions'
-import AddVibeBtn from '@/components/AddVibeComps/AddVibeBtn'
 import VibesList from '@/components/VibesComps/VibesList'
 import ShareBtn from '@/components/VibesComps/shareBtn'
 
@@ -36,7 +35,6 @@ export default async function Profile({ params: { userId } }: Props) {
         <ShareBtn username={userName} user_id={userId} />
       </div>
       <VibesList vibes={vibesList} isFeed={false} />
-      <AddVibeBtn paramsId={userId} />
     </>
   )
 }
