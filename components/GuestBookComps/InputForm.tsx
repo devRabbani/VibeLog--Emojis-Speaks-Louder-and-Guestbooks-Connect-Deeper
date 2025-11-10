@@ -66,7 +66,7 @@ export default function InputForm({ username }: { username: string }) {
 
   return (
     <form
-      className="mb-6 rounded-card border border-teal-600/20 bg-white p-4 shadow-sm"
+      className="mb-6 rounded-card sm:border border-teal-600/20 sm:bg-white sm:p-4 sm:shadow-sm"
       onSubmit={handleMessage}
     >
       <label className="text-sm text-slate-600" htmlFor="guest-message">

@@ -38,8 +38,8 @@ export default function Nav() {
   }
 
   return (
-    <nav className="card-surface rounded-shell sticky top-4 z-50 px-5 py-3.5 border border-white/60 shadow-[0_18px_60px_rgba(15,23,42,0.18)]">
-      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+    <nav className="card-surface rounded-shell sticky top-3 sm:top-4 z-50 px-2 py-2.5 sm:px-5 sm:py-3.5 border border-white/60 shadow-[0_18px_60px_rgba(15,23,42,0.18)]">
+      <div className="flex gap-4 items-center justify-between">
         <Link
           className="flex items-center gap-2.5 text-3xl font-semibold text-slate-900"
           href="/"
@@ -47,7 +47,7 @@ export default function Nav() {
           <span className="inline-flex h-11 w-11 items-center justify-center rounded-card bg-teal-600 text-white text-2xl font-black leading-none shadow-inner">
             V
           </span>
-          VibeLog
+          <span className='hidden sm:inline'>VibeLog</span>
         </Link>
 
         <div className="flex flex-wrap items-center gap-2 font-semibold text-sm sm:text-base">

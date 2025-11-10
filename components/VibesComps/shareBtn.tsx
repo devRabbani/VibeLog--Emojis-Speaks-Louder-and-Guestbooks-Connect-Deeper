@@ -43,7 +43,9 @@ export default function ShareBtn({
       onClick={handleShareToast}
       className="inline-flex items-center gap-2 rounded-card border border-teal-600/30 bg-white px-4 py-2 text-sm font-semibold text-slate-800 shadow transition-colors duration-200 hover:border-teal-600 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-200 disabled:opacity-60"
     >
-      Share profile
+      <span className='hidden sm:inline'>
+       Share profile
+      </span>
       <RiShareBoxFill className="text-lg" />
     </button>
   )

@@ -18,7 +18,7 @@ export default function VibesList({ vibes, isFeed }: Props) {
   }
 
   return (
-    <div className="mt-8 grid grid-cols-2 sm:grid-cols-4">
+    <div className="mt-4 sm:mt-8 gap-y-2 sm:gap-0 grid grid-cols-3 sm:grid-cols-4">
       <VibesMap vibes={vibes} />
       <VibesBottomBar vibesLength={vibes.length} isFeed={isFeed} />
     </div>
@@ -36,7 +36,7 @@ const VibeItem = ({ data, index }: { data: VibesTypes; index: number }) => {
 
   return (
     <div
-      className={`text-6xl sm:text-7xl flex flex-col items-center justify-between w-full text-center rounded-card px-4 py-6 transition-all duration-200 hover:shadow-[inset_0_14px_28px_rgba(15,23,42,0.08)]`}
+      className={`text-6xl sm:text-7xl flex flex-col items-center justify-between w-full text-center rounded-card px-1 py-3 sm:px-4 sm:py-6 transition-all duration-200 hover:shadow-[inset_0_14px_28px_rgba(15,23,42,0.08)]`}
     >
       <span className={`mb-3 drop-shadow-sm ${textColor}`}>{data.emoji}</span>
       {!!data?.name ? (
