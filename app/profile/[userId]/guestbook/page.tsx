@@ -19,12 +19,12 @@ export default async function Guestbook({
   ])
 
   return (
-    <div className="card-surface mt-1 profileHeight border border-white/70 pt-4 pb-6 px-5">
+    <>
       <InputForm username={username} />
       <h3 className="text-lg font-semibold text-slate-900 border-b border-slate-200 pb-3 mb-4 px-1.5 sm:px-2">
         Recent messages
       </h3>
       <MessagesList messages={guestMessages} />
-    </div>
+    </>
   )
 }

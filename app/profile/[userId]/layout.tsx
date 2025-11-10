@@ -6,9 +6,11 @@ export default function ProfileLayout({
   children: React.ReactNode
 }) {
   return (
-    <>
-      <Subnav />
+    <div className="card-surface profileHeight border border-white/70 px-7 pt-6 pb-10 sm:relative">
+      <div className="mb-6">
+        <Subnav />
+      </div>
       {children}
-    </>
+    </div>
   )
 }

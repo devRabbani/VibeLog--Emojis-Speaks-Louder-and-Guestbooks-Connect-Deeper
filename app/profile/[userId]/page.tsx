@@ -22,7 +22,7 @@ export default async function Profile({ params: { userId } }: Props) {
   ])
 
   return (
-    <div className="card-surface profileHeight border border-white/70 px-7 pt-5 pb-10 sm:relative">
+    <>
       <div className="flex flex-col gap-3 mb-5 border-b border-slate-200 pb-4 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
         <div>
           <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
@@ -37,6 +37,6 @@ export default async function Profile({ params: { userId } }: Props) {
       </div>
       <VibesList vibes={vibesList} isFeed={false} />
       <AddVibeBtn paramsId={userId} />
-    </div>
+    </>
   )
 }
